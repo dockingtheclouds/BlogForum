@@ -120,11 +120,6 @@ export const createPost = /* GraphQL */ `
   }
 `;
 
-export const createPostOnBlog = /* GraphQL */ `
-  mutation CreatePostOnBlog (
-    
-`
-
 export const updatePost = /* GraphQL */ `
   mutation UpdatePost(
     $input: UpdatePostInput!

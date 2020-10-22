@@ -1,17 +1,21 @@
 import React from "react";
 import {API, graphqlOperation} from 'aws-amplify'
-import {getBlog} from "../graphql/queries";
+import {getBlog, searchPosts} from "../graphql/queries";
 import Link from "react-router-dom/Link";
 import {Loading, Tabs, Icon} from "element-react";
 import NewPost from '../components/NewPost';
 import Post from "../components/Post";
+import PostSearch from "../components/PostSearch";
 
 
 class BlogPage extends React.Component {
     state = {
         blog: null,
         isLoading: true,
-        isBlogOwner: false
+        isBlogOwner: false,
+        searchTerm: "",
+        searchResults: [],
+        isSearching: false
     };
 
     componentDidMount() {
@@ -34,6 +38,32 @@ class BlogPage extends React.Component {
         const {blog} = this.state
         if (user) {
             this.setState({isBlogOwner: user.username === blog.owner})
+        }
+    }
+
+    handleSearchChange = searchTerm => this.setState({searchTerm: searchTerm})
+
+    handleClearSearch = () => this.setState({searchTerm: "", searchResults: []})
+
+    handleSearch = async event => {
+        try {
+            event.preventDefault()
+            console.log(this.state.searchTerm);
+            this.setState({isSearching: true})
+            const result = await API.graphql(graphqlOperation(searchPosts, {
+                filter: {
+                    or: [
+                        {title: {match: this.state.searchTerm}}
+                    ]
+                }
+            }))
+            console.log(result)
+            this.setState({
+                searchResults: result.data.searchPosts.items,
+                isSearching: false
+            })
+        } catch (err) {
+            console.error(err)
         }
     }
 
@@ -84,12 +114,17 @@ class BlogPage extends React.Component {
                         }
                         name={"2"}
                     >
-                        <div className="post-list">
-                            {blog.posts.items.map(post => (
-                                <Post
-                                    post={post}/>
-                            ))}
-                        </div>
+                        <>
+                            <PostSearch
+                                searchTerm={this.state.searchTerm}
+                                isSearching={this.state.isSearching}
+                                handleSearchChange={this.handleSearchChange}
+                                handleClearSearch={this.handleClearSearch}
+                                handleSearch={this.handleSearch}
+                            />
+                            <Post searchResults={this.state.searchResults}
+                            />
+                        </>
                     </Tabs.Pane>
 
                 </Tabs>

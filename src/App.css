@@ -81,7 +81,7 @@ body {
 .app-title {
   font-weight: 400;
   font-size: 1.5rem;
-  color: black;
+  color: white;
   margin: -3px;
 }
 
@@ -94,7 +94,7 @@ body {
 .app-user {
   font-weight: 350;
   font-size: 1.2rem;
-  color: black;
+  color: white;
 }
 
 .text-center {
@@ -151,7 +151,7 @@ body {
 .nav-container {
   display: flex;
   flex-wrap: wrap;
-  background-color: #50bfff;
+  background-color: #679b9b;
 }
 
 .nav-link {
