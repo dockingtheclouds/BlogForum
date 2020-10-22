@@ -12,9 +12,9 @@ export const getBlog = /* GraphQL */ `
           title
           body
           blogID
+          owner
           createdAt
           updatedAt
-          owner
         }
         nextToken
       }
@@ -54,6 +54,8 @@ export const getPost = /* GraphQL */ `
       title
       body
       blogID
+      owner
+      createdAt
       blog {
         id
         name
@@ -70,14 +72,13 @@ export const getPost = /* GraphQL */ `
           id
           postID
           content
+          owner
           createdAt
           updatedAt
         }
         nextToken
       }
-      createdAt
       updatedAt
-      owner
     }
   }
 `;
@@ -93,6 +94,8 @@ export const listPosts = /* GraphQL */ `
         title
         body
         blogID
+        owner
+        createdAt
         blog {
           id
           name
@@ -104,9 +107,7 @@ export const listPosts = /* GraphQL */ `
         comments {
           nextToken
         }
-        createdAt
         updatedAt
-        owner
       }
       nextToken
     }
@@ -122,6 +123,8 @@ export const getComment = /* GraphQL */ `
         title
         body
         blogID
+        owner
+        createdAt
         blog {
           id
           name
@@ -133,11 +136,10 @@ export const getComment = /* GraphQL */ `
         comments {
           nextToken
         }
-        createdAt
         updatedAt
-        owner
       }
       content
+      owner
       createdAt
       updatedAt
     }
@@ -158,11 +160,12 @@ export const listComments = /* GraphQL */ `
           title
           body
           blogID
+          owner
           createdAt
           updatedAt
-          owner
         }
         content
+        owner
         createdAt
         updatedAt
       }
@@ -217,6 +220,8 @@ export const searchPosts = /* GraphQL */ `
         title
         body
         blogID
+        owner
+        createdAt
         blog {
           id
           name
@@ -228,9 +233,7 @@ export const searchPosts = /* GraphQL */ `
         comments {
           nextToken
         }
-        createdAt
         updatedAt
-        owner
       }
       nextToken
       total

@@ -21,8 +21,8 @@ class NewPost extends React.Component {
             const input = {
                 title: this.state.title,
                 body: this.state.body,
-                blogID: this.props.blogId,
-                owner: user.username
+                owner: user.username,
+                blogID: this.props.blogId
             }
             const result = await API.graphql(graphqlOperation(createPost, {input}))
             console.log("Create product", result)
@@ -67,7 +67,7 @@ class NewPost extends React.Component {
                                 </Form.Item>
                                 <Button disabled={!title || !body}
                                         type={"primary"}
-                                        onClick={this.handleAddPost(user)}
+                                        onClick={() => this.handleAddPost({user})}
                                         loading={isUploading}
                                 >
                                     {isUploading ? "Posting Blog" : "Add Post"}

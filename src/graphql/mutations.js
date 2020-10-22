@@ -15,9 +15,9 @@ export const createBlog = /* GraphQL */ `
           title
           body
           blogID
+          owner
           createdAt
           updatedAt
-          owner
         }
         nextToken
       }
@@ -42,9 +42,9 @@ export const updateBlog = /* GraphQL */ `
           title
           body
           blogID
+          owner
           createdAt
           updatedAt
-          owner
         }
         nextToken
       }
@@ -69,9 +69,9 @@ export const deleteBlog = /* GraphQL */ `
           title
           body
           blogID
+          owner
           createdAt
           updatedAt
-          owner
         }
         nextToken
       }
@@ -92,6 +92,8 @@ export const createPost = /* GraphQL */ `
       title
       body
       blogID
+      owner
+      createdAt
       blog {
         id
         name
@@ -108,18 +110,16 @@ export const createPost = /* GraphQL */ `
           id
           postID
           content
+          owner
           createdAt
           updatedAt
         }
         nextToken
       }
-      createdAt
       updatedAt
-      owner
     }
   }
 `;
-
 export const updatePost = /* GraphQL */ `
   mutation UpdatePost(
     $input: UpdatePostInput!
@@ -130,6 +130,8 @@ export const updatePost = /* GraphQL */ `
       title
       body
       blogID
+      owner
+      createdAt
       blog {
         id
         name
@@ -146,14 +148,13 @@ export const updatePost = /* GraphQL */ `
           id
           postID
           content
+          owner
           createdAt
           updatedAt
         }
         nextToken
       }
-      createdAt
       updatedAt
-      owner
     }
   }
 `;
@@ -167,6 +168,8 @@ export const deletePost = /* GraphQL */ `
       title
       body
       blogID
+      owner
+      createdAt
       blog {
         id
         name
@@ -183,14 +186,13 @@ export const deletePost = /* GraphQL */ `
           id
           postID
           content
+          owner
           createdAt
           updatedAt
         }
         nextToken
       }
-      createdAt
       updatedAt
-      owner
     }
   }
 `;
@@ -207,6 +209,8 @@ export const createComment = /* GraphQL */ `
         title
         body
         blogID
+        owner
+        createdAt
         blog {
           id
           name
@@ -218,11 +222,10 @@ export const createComment = /* GraphQL */ `
         comments {
           nextToken
         }
-        createdAt
         updatedAt
-        owner
       }
       content
+      owner
       createdAt
       updatedAt
     }
@@ -241,6 +244,8 @@ export const updateComment = /* GraphQL */ `
         title
         body
         blogID
+        owner
+        createdAt
         blog {
           id
           name
@@ -252,11 +257,10 @@ export const updateComment = /* GraphQL */ `
         comments {
           nextToken
         }
-        createdAt
         updatedAt
-        owner
       }
       content
+      owner
       createdAt
       updatedAt
     }
@@ -275,6 +279,8 @@ export const deleteComment = /* GraphQL */ `
         title
         body
         blogID
+        owner
+        createdAt
         blog {
           id
           name
@@ -286,11 +292,10 @@ export const deleteComment = /* GraphQL */ `
         comments {
           nextToken
         }
-        createdAt
         updatedAt
-        owner
       }
       content
+      owner
       createdAt
       updatedAt
     }

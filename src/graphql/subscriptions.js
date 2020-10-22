@@ -12,9 +12,9 @@ export const onCreateBlog = /* GraphQL */ `
           title
           body
           blogID
+          owner
           createdAt
           updatedAt
-          owner
         }
         nextToken
       }
@@ -36,9 +36,9 @@ export const onUpdateBlog = /* GraphQL */ `
           title
           body
           blogID
+          owner
           createdAt
           updatedAt
-          owner
         }
         nextToken
       }
@@ -60,9 +60,9 @@ export const onDeleteBlog = /* GraphQL */ `
           title
           body
           blogID
+          owner
           createdAt
           updatedAt
-          owner
         }
         nextToken
       }
@@ -80,6 +80,8 @@ export const onCreatePost = /* GraphQL */ `
       title
       body
       blogID
+      owner
+      createdAt
       blog {
         id
         name
@@ -96,14 +98,13 @@ export const onCreatePost = /* GraphQL */ `
           id
           postID
           content
+          owner
           createdAt
           updatedAt
         }
         nextToken
       }
-      createdAt
       updatedAt
-      owner
     }
   }
 `;
@@ -114,6 +115,8 @@ export const onUpdatePost = /* GraphQL */ `
       title
       body
       blogID
+      owner
+      createdAt
       blog {
         id
         name
@@ -130,14 +133,13 @@ export const onUpdatePost = /* GraphQL */ `
           id
           postID
           content
+          owner
           createdAt
           updatedAt
         }
         nextToken
       }
-      createdAt
       updatedAt
-      owner
     }
   }
 `;
@@ -148,6 +150,8 @@ export const onDeletePost = /* GraphQL */ `
       title
       body
       blogID
+      owner
+      createdAt
       blog {
         id
         name
@@ -164,14 +168,13 @@ export const onDeletePost = /* GraphQL */ `
           id
           postID
           content
+          owner
           createdAt
           updatedAt
         }
         nextToken
       }
-      createdAt
       updatedAt
-      owner
     }
   }
 `;
@@ -185,6 +188,8 @@ export const onCreateComment = /* GraphQL */ `
         title
         body
         blogID
+        owner
+        createdAt
         blog {
           id
           name
@@ -196,11 +201,10 @@ export const onCreateComment = /* GraphQL */ `
         comments {
           nextToken
         }
-        createdAt
         updatedAt
-        owner
       }
       content
+      owner
       createdAt
       updatedAt
     }
@@ -216,6 +220,8 @@ export const onUpdateComment = /* GraphQL */ `
         title
         body
         blogID
+        owner
+        createdAt
         blog {
           id
           name
@@ -227,11 +233,10 @@ export const onUpdateComment = /* GraphQL */ `
         comments {
           nextToken
         }
-        createdAt
         updatedAt
-        owner
       }
       content
+      owner
       createdAt
       updatedAt
     }
@@ -247,6 +252,8 @@ export const onDeleteComment = /* GraphQL */ `
         title
         body
         blogID
+        owner
+        createdAt
         blog {
           id
           name
@@ -258,11 +265,10 @@ export const onDeleteComment = /* GraphQL */ `
         comments {
           nextToken
         }
-        createdAt
         updatedAt
-        owner
       }
       content
+      owner
       createdAt
       updatedAt
     }

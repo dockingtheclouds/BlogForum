@@ -61,11 +61,17 @@ const Post = ({searchResults}) => {
                                             <Link className={"link"} to={`/posts/${post.id}`}>
                                                 <h3 style={{
                                                     color: "#0278ae",
-                                                    margin: "8px 0"
+                                                    margin: "auto"
                                                 }}>
                                                     {post.title}
                                                 </h3>
                                             </Link>
+                                            <span style={{
+                                                color: '#709fb0',
+                                                marginTop: "auto"
+                                            }}>
+                                                {post.owner}
+                                            </span>
                                         </span>
                                         <div style={{color: 'var(--lightSquidInk)'}}>
                                             {post.body.substring(0, 100)}...
