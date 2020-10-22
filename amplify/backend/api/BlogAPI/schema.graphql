@@ -1,0 +1,26 @@
+type Blog @model @searchable{
+  id: ID!
+  name: String!
+  posts: [Post] @connection(keyName: "byBlog", fields: ["id"])
+  tags: [String]
+  owner: String!
+  createdAt: String
+}
+
+type Post @model @searchable @auth(rules: [{allow: owner, identityField: "sub" }]) @key(name: "byBlog", fields: ["blogID", "body"]) {
+  id: ID!
+  title: String!
+  body: String!
+  blogID: ID!
+  owner: String!
+  createdAt: String
+  blog: Blog @connection(fields: ["blogID"])
+  comments: [Comment] @connection(keyName: "byPost", fields: ["id"])
+}
+
+type Comment @model @key(name: "byPost", fields: ["postID", "content"]) {
+  id: ID!
+  postID: ID!
+  post: Post @connection(fields: ["postID"])
+  content: String!
+}
