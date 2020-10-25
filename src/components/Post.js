@@ -11,7 +11,7 @@ const Post = ({searchResults}) => {
     const onNewPost = (prevQuery, newData) => {
         let updatedQuery = {...prevQuery}
         updatedQuery.listPosts.items = [
-            newData.onCreateMarket,
+            newData.onCreatePost,
             ...prevQuery.listPosts.items
         ]
 
@@ -66,12 +66,6 @@ const Post = ({searchResults}) => {
                                                     {post.title}
                                                 </h3>
                                             </Link>
-                                            <span style={{
-                                                color: '#709fb0',
-                                                marginTop: "auto"
-                                            }}>
-                                                {post.owner}
-                                            </span>
                                         </span>
                                         <div style={{color: 'var(--lightSquidInk)'}}>
                                             {post.body.substring(0, 100)}...

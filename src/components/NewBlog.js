@@ -67,7 +67,7 @@ class NewBlog extends React.Component {
                             </Form.Item>
                             <Form.Item>
                                 <Button
-                                    type={'info'}
+                                    style={{backgroundColor: "#3797a4"}}
                                     icon={'search'}
                                     onClick={this.props.handleSearch}
                                     loading={this.props.isSearching}

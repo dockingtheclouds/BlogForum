@@ -12,9 +12,9 @@ export const onCreateBlog = /* GraphQL */ `
           title
           body
           blogID
-          owner
           createdAt
           updatedAt
+          owner
         }
         nextToken
       }
@@ -36,9 +36,9 @@ export const onUpdateBlog = /* GraphQL */ `
           title
           body
           blogID
-          owner
           createdAt
           updatedAt
+          owner
         }
         nextToken
       }
@@ -60,9 +60,9 @@ export const onDeleteBlog = /* GraphQL */ `
           title
           body
           blogID
-          owner
           createdAt
           updatedAt
+          owner
         }
         nextToken
       }
@@ -80,7 +80,6 @@ export const onCreatePost = /* GraphQL */ `
       title
       body
       blogID
-      owner
       createdAt
       blog {
         id
@@ -105,6 +104,7 @@ export const onCreatePost = /* GraphQL */ `
         nextToken
       }
       updatedAt
+      owner
     }
   }
 `;
@@ -115,7 +115,6 @@ export const onUpdatePost = /* GraphQL */ `
       title
       body
       blogID
-      owner
       createdAt
       blog {
         id
@@ -140,6 +139,7 @@ export const onUpdatePost = /* GraphQL */ `
         nextToken
       }
       updatedAt
+      owner
     }
   }
 `;
@@ -150,7 +150,6 @@ export const onDeletePost = /* GraphQL */ `
       title
       body
       blogID
-      owner
       createdAt
       blog {
         id
@@ -175,6 +174,7 @@ export const onDeletePost = /* GraphQL */ `
         nextToken
       }
       updatedAt
+      owner
     }
   }
 `;
@@ -188,7 +188,6 @@ export const onCreateComment = /* GraphQL */ `
         title
         body
         blogID
-        owner
         createdAt
         blog {
           id
@@ -202,6 +201,7 @@ export const onCreateComment = /* GraphQL */ `
           nextToken
         }
         updatedAt
+        owner
       }
       content
       owner
@@ -220,7 +220,6 @@ export const onUpdateComment = /* GraphQL */ `
         title
         body
         blogID
-        owner
         createdAt
         blog {
           id
@@ -234,6 +233,7 @@ export const onUpdateComment = /* GraphQL */ `
           nextToken
         }
         updatedAt
+        owner
       }
       content
       owner
@@ -252,7 +252,6 @@ export const onDeleteComment = /* GraphQL */ `
         title
         body
         blogID
-        owner
         createdAt
         blog {
           id
@@ -266,6 +265,7 @@ export const onDeleteComment = /* GraphQL */ `
           nextToken
         }
         updatedAt
+        owner
       }
       content
       owner

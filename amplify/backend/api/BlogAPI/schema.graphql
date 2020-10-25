@@ -12,7 +12,6 @@ type Post @model @searchable @auth(rules: [{allow: owner, identityField: "sub" }
   title: String!
   body: String!
   blogID: ID!
-  owner: String
   createdAt: AWSDateTime!
   blog: Blog @connection(fields: ["blogID"])
   comments: [Comment] @connection(keyName: "byPost", fields: ["id"])
@@ -22,7 +21,7 @@ type Comment @model @key(name: "byPost", fields: ["postID", "content"]) {
   id: ID!
   postID: ID!
   post: Post @connection(fields: ["postID"])
-  content: String!
-  owner: String!
+  content: String
+  owner: String
   createdAt: AWSDateTime!
 }

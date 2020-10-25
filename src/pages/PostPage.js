@@ -1,13 +1,17 @@
 import React from "react";
 import {API, graphqlOperation} from 'aws-amplify'
 import {getPost} from "../graphql/queries";
-import {Card, Loading} from "element-react";
+import {Loading} from "element-react";
+import NewComment from "../components/NewComment"
 import Link from "react-router-dom/Link";
+import CommentList from "../components/CommentList";
 
 class PostPage extends React.Component {
     state = {
         post: null,
         isLoading: true,
+        searchResults: [],
+        searchTerm: ""
     }
 
     componentDidMount() {
@@ -20,17 +24,7 @@ class PostPage extends React.Component {
         }
         const result = await API.graphql(graphqlOperation(getPost, input))
         console.log(result)
-        this.setState({post: result.data.getPost, isLoading: false}, () => {
-            this.checkPostOwner();
-        })
-    }
-
-    checkPostOwner = () => {
-        const {user} = this.props
-        const {post} = this.state
-        if (user) {
-            this.setState({isMarketOwner: user.username === post.owner})
-        }
+        this.setState({post: result.data.getPost, isLoading: false})
     }
 
     render() {
@@ -49,7 +43,7 @@ class PostPage extends React.Component {
                     </h1>
                 </div>
                 <div className={'my-2'}>
-                        <div>
+                    <div>
                             <span className={"flex"} style={{
                                 fontWeight: "400px",
                                 position: "relative",
@@ -60,9 +54,10 @@ class PostPage extends React.Component {
                             }}>
                                 {post.body}
                             </span>
-                        </div>
+                    </div>
                 </div>
-
+                <NewComment postId={this.props.postId}/>
+                <CommentList/>
             </>
         );
     }

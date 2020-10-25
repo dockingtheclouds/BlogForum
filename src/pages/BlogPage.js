@@ -89,7 +89,7 @@ class BlogPage extends React.Component {
             </span>
                 </div>
 
-                {/*New product area*/}
+                {/*New postt area*/}
                 <Tabs type={"border-card"} value={isBlogOwner ? "1" : "2"}>
                     {isBlogOwner && (
                         <Tabs.Pane
@@ -123,6 +123,7 @@ class BlogPage extends React.Component {
                                 handleSearch={this.handleSearch}
                             />
                             <Post searchResults={this.state.searchResults}
+                                  blogId={this.props.blogId}
                             />
                         </>
                     </Tabs.Pane>

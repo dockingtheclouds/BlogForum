@@ -12,9 +12,9 @@ export const getBlog = /* GraphQL */ `
           title
           body
           blogID
-          owner
           createdAt
           updatedAt
+          owner
         }
         nextToken
       }
@@ -54,7 +54,6 @@ export const getPost = /* GraphQL */ `
       title
       body
       blogID
-      owner
       createdAt
       blog {
         id
@@ -79,6 +78,7 @@ export const getPost = /* GraphQL */ `
         nextToken
       }
       updatedAt
+      owner
     }
   }
 `;
@@ -94,7 +94,6 @@ export const listPosts = /* GraphQL */ `
         title
         body
         blogID
-        owner
         createdAt
         blog {
           id
@@ -108,6 +107,7 @@ export const listPosts = /* GraphQL */ `
           nextToken
         }
         updatedAt
+        owner
       }
       nextToken
     }
@@ -123,7 +123,6 @@ export const getComment = /* GraphQL */ `
         title
         body
         blogID
-        owner
         createdAt
         blog {
           id
@@ -137,6 +136,7 @@ export const getComment = /* GraphQL */ `
           nextToken
         }
         updatedAt
+        owner
       }
       content
       owner
@@ -160,9 +160,9 @@ export const listComments = /* GraphQL */ `
           title
           body
           blogID
-          owner
           createdAt
           updatedAt
+          owner
         }
         content
         owner
@@ -220,7 +220,6 @@ export const searchPosts = /* GraphQL */ `
         title
         body
         blogID
-        owner
         createdAt
         blog {
           id
@@ -234,6 +233,7 @@ export const searchPosts = /* GraphQL */ `
           nextToken
         }
         updatedAt
+        owner
       }
       nextToken
       total
