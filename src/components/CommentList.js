@@ -1,12 +1,13 @@
 import React from "react";
-import {Card, Loading, Icon} from "element-react";
-import {graphqlOperation} from 'aws-amplify';
+import {Card, Loading} from "element-react";
+import { graphqlOperation} from 'aws-amplify';
 import {listComments} from "../graphql/queries";
 import {onCreateComment} from "../graphql/subscriptions";
 import {Connect} from "aws-amplify-react";
 import Error from "./Error";
 
-const CommentList = () => {
+const CommentList = ({postId}) => {
+
     const onNewComment = (prevQuery, newData) => {
         let updatedQuery = {...prevQuery}
         updatedQuery.listComments.items = [
@@ -19,7 +20,11 @@ const CommentList = () => {
 
     return (
         <Connect
-            query={graphqlOperation(listComments)}
+            query={graphqlOperation(listComments, {
+                filter: {
+                    postID: {eq: postId}
+                }
+            })}
             subscription={graphqlOperation(onCreateComment)}
             onSubscriptionMsg={onNewComment}
         >

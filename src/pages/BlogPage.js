@@ -123,7 +123,7 @@ class BlogPage extends React.Component {
                                 handleSearch={this.handleSearch}
                             />
                             <Post searchResults={this.state.searchResults}
-                                  blogId={this.props.blogId}
+                                  blogId={blog.id}
                             />
                         </>
                     </Tabs.Pane>

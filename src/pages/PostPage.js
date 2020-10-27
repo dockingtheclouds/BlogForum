@@ -56,8 +56,8 @@ class PostPage extends React.Component {
                             </span>
                     </div>
                 </div>
-                <NewComment postId={this.props.postId}/>
-                <CommentList/>
+                <NewComment postId={post.id}/>
+                <CommentList postId={post.id}/>
             </>
         );
     }

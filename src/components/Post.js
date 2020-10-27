@@ -7,7 +7,7 @@ import {Connect} from "aws-amplify-react";
 import Link from "react-router-dom/Link";
 import Error from "./Error";
 
-const Post = ({searchResults}) => {
+const Post = ({searchResults, blogId}) => {
     const onNewPost = (prevQuery, newData) => {
         let updatedQuery = {...prevQuery}
         updatedQuery.listPosts.items = [
@@ -20,7 +20,11 @@ const Post = ({searchResults}) => {
 
     return (
         <Connect
-            query={graphqlOperation(listPosts)}
+            query={graphqlOperation(listPosts, {
+                filter: {
+                    blogID: {eq: blogId}
+                }
+            })}
             subscription={graphqlOperation(onCreatePost)}
             onSubscriptionMsg={onNewPost}
         >
