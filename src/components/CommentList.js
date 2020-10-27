@@ -37,12 +37,27 @@ const CommentList = ({postId}) => {
 
                 return (
                     <>
-                        <h2 className="header">
+                        <h2 className="header"
+                            style={{
+                                width: "813px",
+                                position: "relative",
+                                margin: "auto"
+                            }}
+                        >
                             Comments
                         </h2>
                         {comments.map(comment => (
                             <div key={comment.id} className={"my-2"}>
-                                <Card
+                                <Card style={{
+                                    border: "1px solid #d1dbe5",
+                                    width: "813px",
+                                    position: "relative",
+                                    margin: "auto",
+                                    borderRadius: "4px",
+                                    backgroundColor: "#fff",
+                                    overflow: "hidden",
+                                    boxShadow: "0 2px 4px 0 rgba(0,0,0,.12), 0 0 6px 0 rgba(0,0,0,.04)"
+                                }}
                                     bodyStyle={{
                                         padding: "0.7em",
                                         display: "flex",
